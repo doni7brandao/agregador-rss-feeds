@@ -1,9 +1,10 @@
-Aqui está uma implementação de um agregador de feed RSS que exibe até três posts em paralelo horizontalmente, com um número máximo de seis itens a serem exibidos, título como link clicável, sumário limitado a 200 caracteres, data de publicação e data de atualização.
+Aqui está uma implementação de um agregador de feed RSS que exibe até **três posts em paralelo horizontalmente**, com um **número máximo de seis itens** a serem exibidos, título como link clicável, sumário limitado a 200 caracteres, data de publicação e data de atualização.
 
-Usaremos `HTML`, `CSS`, `JavaScript` (com a API `rss2json` para obter o feed RSS e convertê-lo para JSON).
+Usaremos **HTML**, **CSS**, **JavaScript** (com a API `rss2json` para obter o feed RSS e convertê-lo para JSON).
 
-1. Estrutura HTML e CSS
-Vamos usar Flexbox para alinhar os posts horizontalmente e garantir que até três posts sejam exibidos em paralelo. O código também limitará o número total de posts exibidos para seis.
+### 1. Estrutura HTML e CSS
+
+Vamos usar **Flexbox** para alinhar os posts horizontalmente e garantir que até três posts sejam exibidos em paralelo. O código também limitará o número total de posts exibidos para seis.
 
 ```html
 <!DOCTYPE html>
@@ -138,31 +139,35 @@ Vamos usar Flexbox para alinhar os posts horizontalmente e garantir que até tr�
     </script>
 </body>
 </html>
-```html
+```
 
-Explicação:
-Estrutura HTML e CSS:
+### Explicação:
 
-O contêiner .feed-container usa Flexbox para exibir os posts lado a lado. A propriedade width: calc(33.333% - 20px) no elemento .post garante que até três posts sejam exibidos em paralelo, com um espaçamento de 20px entre eles.
-Cada post é exibido em uma "caixa" com título, sumário, data de publicação e, opcionalmente, data de atualização.
-Se não houver posts no feed, o código exibe uma mensagem "Nenhum post encontrado".
-JavaScript:
+1. **Estrutura HTML e CSS**:
+   - O contêiner `.feed-container` usa **Flexbox** para exibir os posts lado a lado. A propriedade `width: calc(33.333% - 20px)` no elemento `.post` garante que até três posts sejam exibidos em paralelo, com um espaçamento de 20px entre eles.
+   - Cada post é exibido em uma "caixa" com título, sumário, data de publicação e, opcionalmente, data de atualização.
+   - Se não houver posts no feed, o código exibe uma mensagem "Nenhum post encontrado".
 
-O código usa fetch para pegar os dados do feed RSS e convertê-los em JSON através da API rss2json.
-Limita o número de posts exibidos para no máximo seis (maxItems = 6), cortando a lista de posts com slice(0, maxItems).
-Cada post é exibido como um bloco com título (link clicável), sumário (até 200 caracteres), data de publicação, e data de atualização (se disponível).
-Sumário Limitado a 200 Caracteres:
+2. **JavaScript**:
+   - O código usa `fetch` para pegar os dados do feed RSS e convertê-los em JSON através da API `rss2json`.
+   - Limita o número de posts exibidos para no máximo seis (`maxItems = 6`), cortando a lista de posts com `slice(0, maxItems)`.
+   - Cada post é exibido como um bloco com título (link clicável), sumário (até 200 caracteres), data de publicação, e data de atualização (se disponível).
 
-O sumário de cada post é truncado para 200 caracteres com substring(0, 200), e adiciona "..." se o sumário for maior que 200 caracteres.
-Data de Publicação e Atualização:
+3. **Sumário Limitado a 200 Caracteres**:
+   - O sumário de cada post é truncado para 200 caracteres com `substring(0, 200)`, e adiciona "..." se o sumário for maior que 200 caracteres.
 
-As datas de publicação e atualização são formatadas para serem exibidas de forma legível, utilizando toLocaleDateString().
-Como Usar:
-Substitua a variável feedUrl com a URL do feed RSS que você deseja exibir.
-O exemplo usa a API rss2json para converter o feed RSS em JSON. Você pode ajustar para usar um script local, caso queira processar o RSS diretamente.
-O layout é responsivo, com os posts organizados em linhas de três posts lado a lado.
-Comportamento:
-Máximo de 6 posts exibidos.
-Três posts por linha em layout horizontal.
-Sumários limitados a 200 caracteres para manter o design limpo.
-Datas de publicação e atualização visíveis para cada post.
+4. **Data de Publicação e Atualização**:
+   - As datas de publicação e atualização são formatadas para serem exibidas de forma legível, utilizando `toLocaleDateString()`.
+
+### Como Usar:
+
+1. **Substitua** a variável `feedUrl` com a URL do feed RSS que você deseja exibir.
+2. O exemplo usa a API **rss2json** para converter o feed RSS em JSON. Você pode ajustar para usar um script local, caso queira processar o RSS diretamente.
+3. O layout é responsivo, com os posts organizados em linhas de três posts lado a lado.
+
+### Comportamento:
+
+- **Máximo de 6 posts exibidos**.
+- **Três posts por linha** em layout horizontal.
+- **Sumários** limitados a 200 caracteres para manter o design limpo.
+- **Datas** de publicação e atualização visíveis para cada post.
